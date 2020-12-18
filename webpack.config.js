@@ -3,10 +3,12 @@ const path = require('path');
 
 const config = {
   entry: {
-    app: './assets/js/index.js'
+    app: "./client/assets/js/index.js",
+    indexedDb: "./client/assets/js/indexedDb.js"
+    
   },
   output: {
-    path: __dirname + '/dist',
+    path: __dirname + '/client/dist',
     filename: '[name].bundle.js',
   },
   mode: 'development',
@@ -27,8 +29,8 @@ const config = {
   plugins: [
     new WebpackPwaManifest({
       fingerprints: false,
-      name: 'Newsy app',
-      short_name: 'Newsy',
+      name: 'budget-app',
+      short_name: 'budget',
       description: 'An application that allows you to view different news articles and save your favorites.',
       background_color: '#01579b',
       theme_color: '#ffffff',
@@ -36,8 +38,8 @@ const config = {
       start_url: '/',
       icons: [
         {
-          src: path.resolve('assets/images/icons/android-chrome-192x192.png'),
-          sizes: [96, 128, 192, 256, 384, 512],
+          src: path.resolve("./client/assets/images/icons/icon-192x192.png"),
+          sizes: [192, 512],
           destination: path.join('assets', 'icons'),
         },
       ],
