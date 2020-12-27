@@ -48,11 +48,16 @@ self.addEventListener('fetch', (event) => {
           return cachedResponse;
         }
 
-        return caches.open(RUNTIME).then((cache) => {
+        return caches.open(RUNTIME).then((cache) => {          
           return fetch(event.request).then((response) => {
+            if(event.request.method.toUpperCase()==="GET"){
             return cache.put(event.request, response.clone()).then(() => {
               return response;
+
             });
+          } else{
+            return response;
+          }
           });
         });
       })
